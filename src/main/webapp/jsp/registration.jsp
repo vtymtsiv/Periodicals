@@ -25,24 +25,21 @@
 
         <spring:bind path="lastName">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="lastName" class="form-control" placeholder="Last name"
-                            autofocus="true"/>
+                <form:input type="text" path="lastName" class="form-control" placeholder="Last name"/>
                 <form:errors path="lastName"/>
             </div>
         </spring:bind>
 
         <spring:bind path="email">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="email" class="form-control" placeholder="Email"
-                            autofocus="true"/>
+                <form:input type="text" path="email" class="form-control" placeholder="Email"/>
                 <form:errors path="email"/>
             </div>
         </spring:bind>
 
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="username" class="form-control" placeholder="Username"
-                            autofocus="true"/>
+                <form:input type="text" path="username" class="form-control" placeholder="Username"/>
                 <form:errors path="username"/>
             </div>
         </spring:bind>
