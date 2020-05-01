@@ -1,11 +1,13 @@
 package ua.lviv.lgs.periodicals.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +20,8 @@ public class Periodical {
 
   private String name;
   private String description;
-  private Date createAt;
+  @Column(name = "created_at")
+  private LocalDateTime createAt;
   private boolean active;
 
   public Periodical() {
@@ -48,11 +51,11 @@ public class Periodical {
     this.description = description;
   }
 
-  public Date getCreateAt() {
+  public LocalDateTime getCreateAt() {
     return createAt;
   }
 
-  public void setCreateAt(Date createAt) {
+  public void setCreateAt(LocalDateTime createAt) {
     this.createAt = createAt;
   }
 
