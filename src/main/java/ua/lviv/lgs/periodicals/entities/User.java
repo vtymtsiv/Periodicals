@@ -21,9 +21,12 @@ public class User {
   private String firstName;
   @Column(name = "last_name")
   private String lastName;
+  //Todo make unique
   private String email;
   private String username;
   private String password;
+  private boolean isEmailVerified;
+  private String verifyEmailHash;
 
   @Enumerated(EnumType.STRING)
   private UserRole role;
@@ -36,6 +39,22 @@ public class User {
     this.lastName = lastName;
     this.email = email;
     this.username = username;
+  }
+
+  public String getVerifyEmailHash() {
+    return verifyEmailHash;
+  }
+
+  public void setVerifyEmailHash(String verifyEmailHash) {
+    this.verifyEmailHash = verifyEmailHash;
+  }
+
+  public boolean isEmailVerified() {
+    return isEmailVerified;
+  }
+
+  public void setEmailVerified(boolean emailVerified) {
+    isEmailVerified = emailVerified;
   }
 
   public String getUsername() {
