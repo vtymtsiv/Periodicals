@@ -12,9 +12,17 @@
 <h2>All periodicals</h2>
 
 <c:forEach items="${periodicals}" var="periodical">
-    <p>${periodical.name}</p>
-    <p>${periodical.description}</p>
-    <br>
+
+    // Todo Align a bit
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${periodical.name}</h5>
+                <p class="card-text">${periodical.description}</p>
+                <a href="/periodical/${periodical.id}" class="card-link">Card link</a>
+            </div>
+        </div>
+    </div>
 </c:forEach>
 </body>
 </html>
