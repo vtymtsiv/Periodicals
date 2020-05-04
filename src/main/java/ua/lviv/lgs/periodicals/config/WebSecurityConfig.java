@@ -31,13 +31,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-      .antMatchers("/home").hasAnyRole("USER", "ADMIN")
+      .antMatchers("/periodicals/create","/periodicals/save").hasRole( "ADMIN")
+      .antMatchers("/periodicals/all").hasAnyRole( "ADMIN", "USER")
       .anyRequest().permitAll()
       .and()
       .formLogin().loginPage("/login").loginProcessingUrl("/login")
       .usernameParameter("username").passwordParameter("password")
       .defaultSuccessUrl("/home", true).and()
-      .logout().logoutSuccessUrl("/login?logout")
+      .logout().logoutSuccessUrl("/home")
       .and()
       .exceptionHandling().accessDeniedPage("/403")
       .and()
