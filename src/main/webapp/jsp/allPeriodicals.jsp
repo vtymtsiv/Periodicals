@@ -10,19 +10,34 @@
 <jsp:include page="navbar.jsp"/>
 
 <h2>All periodicals</h2>
+<div class="d-flex flex-wrap">
+    <c:forEach items="${periodicals}" var="periodical">
+        <div class="card m-4 " style="width: 18rem; min-width:10rem;">
 
-<c:forEach items="${periodicals}" var="periodical">
-
-    // Todo Align a bit
-    <div class="container">
-        <div class="card" style="width: 18rem;">
+            <div id="periodical-photo-${periodical.id}" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <c:forEach items="${periodical.photos}" var="periodicalPhoto" varStatus="loop">
+                        <div class="carousel-item${ loop.index == 0 ? " active" : "" }">
+                            <img class="d-block w-100" src="data:image/png;base64, ${periodicalPhoto.photo}">
+                        </div>
+                    </c:forEach>
+                </div>
+                <a class="carousel-control-prev" href="#periodical-photo-${periodical.id}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#periodical-photo-${periodical.id}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">${periodical.name}</h5>
+                <p class="card-text">${periodical.name}</p>
                 <p class="card-text">${periodical.description}</p>
-                <a href="/periodical/${periodical.id}" class="card-link">Card link</a>
+                <a href="/periodical/${periodical.id}" class="card-link">Subscribe</a>
             </div>
         </div>
-    </div>
-</c:forEach>
+    </c:forEach>
+</div>
 </body>
 </html>

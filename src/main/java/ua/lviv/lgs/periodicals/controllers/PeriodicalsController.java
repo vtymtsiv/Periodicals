@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import ua.lviv.lgs.periodicals.dtos.PeriodicalCreateFormDto;
 import ua.lviv.lgs.periodicals.services.PeriodicalService;
@@ -25,12 +27,12 @@ public class PeriodicalsController {
 
   @GetMapping("/create")
   public String create() {
-    return "createPeriodical";
+    return "createPeriodicals";
   }
 
   @PostMapping("/save")
-  public String save(@ModelAttribute PeriodicalCreateFormDto periodicalCreateFormDto) {
-    periodicalService.save(periodicalCreateFormDto);
+  public String save(@ModelAttribute PeriodicalCreateFormDto periodicalCreateFormDto, @RequestParam MultipartFile[] photos) {
+    periodicalService.save(periodicalCreateFormDto, photos);
     return "redirect:/periodicals/create?success";
   }
 
