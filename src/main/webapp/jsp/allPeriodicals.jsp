@@ -34,7 +34,7 @@
             <div class="card-body">
                 <p class="card-text">${periodical.name}</p>
                 <p class="card-text">${periodical.description}</p>
-                <a href="/periodicals/subscribe/${periodical.id}" class="card-link">Subscribe</a>
+                <a href="/periodicals/subscribe/${periodical.id}" class="btn btn-primary">Subscribe</a>
             </div>
         </div>
     </c:forEach>
