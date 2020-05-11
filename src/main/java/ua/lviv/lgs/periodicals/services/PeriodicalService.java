@@ -7,6 +7,8 @@ import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +21,7 @@ import ua.lviv.lgs.periodicals.repositories.PeriodicalRepository;
 
 @Service
 public class PeriodicalService {
+  private static final Logger LOG = LoggerFactory.getLogger(PeriodicalService.class);
 
   private final PeriodicalRepository periodicalRepository;
   private final PeriodicalPhotoRepository periodicalPhotoRepository;
@@ -59,8 +62,12 @@ public class PeriodicalService {
     try {
       return multipartFile.getBytes();
     } catch (IOException e) {
-      System.out.println("Can't save file with name " + multipartFile.getName());
+      LOG.warn("Can't process file with name {} with size {}", multipartFile.getName(), multipartFile.getSize(), e);
       return new byte[]{};
     }
+  }
+
+  public List<Integer> getAllIdsByUserId(int userId) {
+    return periodicalRepository.getAllIdsByUserId(userId);
   }
 }

@@ -2,7 +2,8 @@ package ua.lviv.lgs.periodicals.services;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,10 +14,10 @@ import ua.lviv.lgs.periodicals.repositories.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
+    private static final Logger LOG = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
     private final UserRepository userRepository;
 
-    @Autowired
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -26,6 +27,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         Optional<User> userMaybe = userRepository.findByUsername(username);
         return userMaybe
                 .map(CustomUserDetails::new)
-                .orElseThrow(() -> new UsernameNotFoundException("No user present with username: " + username));
+                .orElseThrow(() -> {
+                    LOG.error("No user present with username");
+                    return new UsernameNotFoundException("No user present with username: " + username);});
     }
 }
