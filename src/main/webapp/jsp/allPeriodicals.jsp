@@ -34,7 +34,9 @@
             <div class="card-body">
                 <p class="card-text">${periodical.name}</p>
                 <p class="card-text">${periodical.description}</p>
-                <a href="/periodicals/subscribe/${periodical.id}" class="btn btn-primary">Subscribe</a>
+                <c:if test="${!periodical.isUserSubscribed}">
+                    <a href="/periodicals/subscribe/${periodical.id}" class="btn btn-primary">Subscribe</a>
+                </c:if>
             </div>
         </div>
     </c:forEach>

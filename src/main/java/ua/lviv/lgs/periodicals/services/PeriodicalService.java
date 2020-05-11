@@ -66,4 +66,8 @@ public class PeriodicalService {
       return new byte[]{};
     }
   }
+
+  public List<Integer> getAllIdsByUserId(int userId) {
+    return periodicalRepository.getAllIdsByUserId(userId);
+  }
 }
