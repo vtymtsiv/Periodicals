@@ -1,12 +1,14 @@
 package ua.lviv.lgs.periodicals.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +24,8 @@ public class Periodical {
   @Column(name = "created_at")
   private LocalDateTime createAt;
   private boolean active;
+  @OneToMany(mappedBy = "periodical")
+  private List<PeriodicalPhoto> photos;
 
   public Periodical() {
   }
@@ -32,6 +36,14 @@ public class Periodical {
     this.active = active;
   }
 
+
+  public List<PeriodicalPhoto> getPhotos() {
+    return photos;
+  }
+
+  public void setPhotos(List<PeriodicalPhoto> photos) {
+    this.photos = photos;
+  }
 
   public int getId() {
     return id;

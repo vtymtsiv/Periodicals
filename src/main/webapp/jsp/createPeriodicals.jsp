@@ -19,7 +19,7 @@
             </div>
             <div class="col-sm">
                 <h3>New periodical</h3>
-                <form action="/periodicals/save" method="POST">
+                <form action="/periodicals/save" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Name</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" name="name">
@@ -27,6 +27,10 @@
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Description</label>
                         <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Description" name="description">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput3">Photos</label>
+                        <input type="file" multiple class="form-control" id="formGroupExampleInput3" name="photos">
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="gridCheck1" name="active">

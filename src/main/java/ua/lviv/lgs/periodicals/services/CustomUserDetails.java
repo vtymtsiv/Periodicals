@@ -21,6 +21,10 @@ public class CustomUserDetails implements UserDetails {
         return AuthorityUtils.commaSeparatedStringToAuthorityList(userRole);
     }
 
+    public int getUserId() {
+        return user.getId();
+    }
+
     @Override
     public String getPassword() {
         return user.getPassword();
