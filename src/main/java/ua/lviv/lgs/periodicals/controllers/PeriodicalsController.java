@@ -79,4 +79,12 @@ public class PeriodicalsController {
     return "redirect:/periodicals/all";
   }
 
+  @GetMapping("/unsubscribe/{id}")
+  public String unsubscribe(@PathVariable("id") int periodicalId, Authentication authentication) {
+    CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+
+    subscriptionService.unsubscribe(periodicalId, customUserDetails.getUserId());
+    return "redirect:/periodicals/all";
+  }
+
 }

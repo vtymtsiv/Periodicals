@@ -44,6 +44,9 @@ public class SubscriptionService {
     subscription.setSubscribedAt(LocalDateTime.now());
 
     subscriptionRepository.save(subscription);
+  }
 
+  public void unsubscribe(int periodicalId, int userId) {
+    subscriptionRepository.deleteByPeriodicalIdAndUserId(periodicalId, userId);
   }
 }

@@ -37,6 +37,9 @@
                 <c:if test="${!periodical.isUserSubscribed}">
                     <a href="/periodicals/subscribe/${periodical.id}" class="btn btn-primary">Subscribe</a>
                 </c:if>
+                <c:if test="${periodical.isUserSubscribed}">
+                    <a href="/periodicals/unsubscribe/${periodical.id}" class="btn btn-secondary">Unsubscribe</a>
+                </c:if>
             </div>
         </div>
     </c:forEach>
