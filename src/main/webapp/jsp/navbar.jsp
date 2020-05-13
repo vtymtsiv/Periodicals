@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -19,18 +20,26 @@
         <ul class="navbar-nav mr-auto">
             <security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
                 <li class="nav-item">
-                    <a class="nav-link" href="/periodicals/all">All </a>
+                    <a class="nav-link" href="/periodicals/all"><spring:message code="periodical.all"/> </a>
                 </li>
             </security:authorize>
             <security:authorize access="hasRole('ROLE_ADMIN')">
                 <li class="nav-item">
-                    <a class="nav-link" href="/periodicals/create">Create periodical </a>
+                    <a class="nav-link" href="/periodicals/create"><spring:message code="periodical.create"/></a>
                 </li>
             </security:authorize>
             <li class="nav-item">
                 <a class="nav-link" href="#">Contact us</a>
             </li>
         </ul>
+
+        <div class="mr-2">
+            <select id="locates">
+                <option value="en">En</option>
+                <option value="ua">Ua</option>
+            </select>
+        </div>
+
         <security:authorize access="isAuthenticated()">
             <security:authentication property="principal.username" />
             <form action="/logout" method="post">
@@ -53,5 +62,7 @@
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+<script src="/js/lang.js"></script>
 </body>
 </html>
