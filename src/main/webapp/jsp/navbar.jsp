@@ -31,6 +31,14 @@
                 <a class="nav-link" href="#">Contact us</a>
             </li>
         </ul>
+
+        <div class="mr-2">
+            <select id="locates">
+                <option value="en">En</option>
+                <option value="ua">Ua</option>
+            </select>
+        </div>
+
         <security:authorize access="isAuthenticated()">
             <security:authentication property="principal.username" />
             <form action="/logout" method="post">
@@ -53,5 +61,7 @@
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+<script src="/js/lang.js"></script>
 </body>
 </html>
