@@ -1,5 +1,7 @@
 package ua.lviv.lgs.periodicals.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -112,5 +114,26 @@ public class User {
 
   public void setRole(UserRole role) {
     this.role = role;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if(this == o) return true;
+    if(o == null || getClass() != o.getClass()) return false;
+    User user = (User) o;
+    return getId() == user.getId() &&
+      isEmailVerified() == user.isEmailVerified() &&
+      getFirstName().equals(user.getFirstName()) &&
+      getLastName().equals(user.getLastName()) &&
+      getEmail().equals(user.getEmail()) &&
+      getUsername().equals(user.getUsername()) &&
+      getPassword().equals(user.getPassword()) &&
+      getVerifyEmailHash().equals(user.getVerifyEmailHash()) &&
+      getRole() == user.getRole();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getUsername(), getPassword(), isEmailVerified(), getVerifyEmailHash(), getRole());
   }
 }
