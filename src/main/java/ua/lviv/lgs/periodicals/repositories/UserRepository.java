@@ -19,7 +19,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
   Optional<User> findByVerifyEmailHash(String hash);
 
-  @Modifying
+  @Modifying(clearAutomatically = true)
   @Query("Update User u set u.isEmailVerified=TRUE where u.id = :userId")
   void confirmEmail(@Param("userId") int userId);
 }
